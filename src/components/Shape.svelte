@@ -1,6 +1,8 @@
 <script>
   export let points
-  $: d = svgPath(points, bezierCommand)
+  export let command
+
+  $: d = svgPath(points, command === 'line' ? lineCommand : bezierCommand )
 
   const svgPath = (points, command) => {  
     const d = points.reduce((acc, point, i, a) => i === 0    
